@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                git 'https://github.com/PericaRajcevic1/aws-cicd-app.git'
+                echo 'Kod je već dohvaćen iz SCM-a.'
             }
         }
 
@@ -23,7 +23,7 @@ pipeline {
 
         stage('deploy') {
             steps {
-                echo 'Deploy step (kasnije ćemo dodati pravi deploy)'
+                echo 'Deploy step cemo dodati nakon sto pripremimo drugu EC2 instancu.'
             }
         }
     }
