@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                git 'https://github.com/TVOJ_USERNAME/aws-cicd-app.git'
+                git 'https://github.com/PericaRajcevic1/aws-cicd-app.git'
             }
         }
 
