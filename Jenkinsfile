@@ -24,10 +24,11 @@ pipeline {
         stage('test') {
             steps {
                 sh '''
-                    docker run --rm ${IMAGE_NAME}:${BUILD_NUMBER} sh -c "
-                        nginx -t &&
-                        grep -q 'Perica Rajčević' /usr/share/nginx/html/index.html
-                    "
+                    docker rm -f test-app || true
+                    docker run -d --name test-app -p 3001:3000 ${IMAGE_NAME}:${BUILD_NUMBER}
+                    sleep 5
+                    curl -f http://localhost:3001 | grep "Perica Rajčević"
+                    docker rm -f test-app
                 '''
             }
         }
