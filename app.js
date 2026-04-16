@@ -28,7 +28,11 @@ const taskSchema = new mongoose.Schema({
 const Task = mongoose.model('Task', taskSchema);
 
 app.get('/', async (req, res) => {
-  const tasks = await Task.find().sort({ createdAt: -1 });
+  let tasks = [];
+
+if (MONGO_URL) {
+  tasks = await Task.find().sort({ createdAt: -1 });
+}
 
   const taskItems = tasks.map(task => `
     <li class="task-item">
