@@ -191,6 +191,10 @@ app.get('/api/tasks', async (req, res) => {
   });
 });
 
+app.get('/health', (req, res) => {
+  res.json({ status: 'OK', service: 'todo-app' });
+});
+
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`App running on port ${PORT}`);
 });
