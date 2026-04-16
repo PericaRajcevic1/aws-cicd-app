@@ -3,7 +3,15 @@ const mongoose = require('mongoose');
 
 const app = express();
 const PORT = 3000;
-const MONGO_URL = process.env.MONGO_URL || 'mongodb://mongo:27017/todoapp';
+const MONGO_URL = process.env.MONGO_URL || null;
+
+if (MONGO_URL) {
+  mongoose.connect(MONGO_URL)
+    .then(() => console.log('MongoDB connected'))
+    .catch((err) => console.error('MongoDB error:', err));
+} else {
+  console.log('Running without MongoDB (test mode)');
+}
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
