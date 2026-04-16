@@ -5,7 +5,7 @@ pipeline {
         APP_HOST = '3.94.161.155'
         APP_USER = 'ec2-user'
         APP_DIR  = '/home/ec2-user/docker-app'
-        IMAGE_NAME = 'student-web'
+        IMAGE_NAME = 'todo-app-test'
     }
 
     stages {
@@ -26,7 +26,7 @@ pipeline {
                 sh '''
                     docker rm -f test-app || true
                     docker run -d --name test-app -p 3001:3000 ${IMAGE_NAME}:${BUILD_NUMBER}
-                    sleep 5
+                    sleep 10
                     curl -f http://localhost:3001 | grep "Perica Rajčević"
                     docker rm -f test-app
                 '''
