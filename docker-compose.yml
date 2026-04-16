@@ -1,7 +1,23 @@
-version: '3'
+version: '3.9'
 
 services:
-  web:
+  app:
     build: .
+    container_name: todo-app
     ports:
       - "80:3000"
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/todoapp
+    depends_on:
+      - mongo
+    restart: always
+
+  mongo:
+    image: mongo:7
+    container_name: todo-mongo
+    volumes:
+      - mongo_data:/data/db
+    restart: always
+
+volumes:
+  mongo_data:
