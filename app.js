@@ -1,16 +1,23 @@
 const express = require('express');
 const app = express();
 
+// početna stranica
 app.get('/', (req, res) => {
-  res.send('<h1>Perica Rajčević</h1><p>Docker CI/CD aplikacija</p>');
+  res.send(`
+    <h1>Perica Rajčević</h1>
+    <p>Docker CI/CD aplikacija</p>
+    <p>Vrijeme: ${new Date().toLocaleString()}</p>
+    <a href="/api">API</a>
+  `);
 });
 
-app.get('/time', (req, res) => {
-  res.json({ time: new Date().toISOString() });
-});
-
+// API ruta
 app.get('/api', (req, res) => {
-  res.json({ message: "CI/CD radi!", student: "Perica Rajčević" });
+  res.json({
+    student: "Perica Rajčević",
+    message: "CI/CD radi!",
+    time: new Date().toISOString()
+  });
 });
 
 app.listen(3000, () => {
