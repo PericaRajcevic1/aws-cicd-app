@@ -1,7 +1,6 @@
+version: '3'
 services:
   web:
     build: .
-    container_name: student-web
     ports:
-      - "80:80"
-    restart: always
+      - "80:3000"
