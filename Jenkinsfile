@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        APP_HOST = '54.147.222.96'
+        APP_HOST = '3.94.161.155'
         APP_USER = 'ec2-user'
         APP_DIR  = '/home/ec2-user/docker-app'
         IMAGE_NAME = 'student-web'
